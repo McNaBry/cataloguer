@@ -14,7 +14,6 @@ const categories: string[] = [
 function CategoryOption({ category }: { category: string }) {
   return (
     <Combobox.Option 
-      key={category} 
       value={category}
       className={({ active }) => `relative cursor-default select-none py-2 pl-10 pr-4 ${
         active ? "bg-teal-600 text-white" : "text-gray-900"
@@ -62,7 +61,7 @@ function CategoryOptionList({ filteredCategories, query }: CategoryOptionListPro
           </div>
         ) : (
           filteredCategories.map((category) => (
-            <CategoryOption category={category} />
+            <CategoryOption key={category} category={category} />
           ))
         )}
       </Combobox.Options>
