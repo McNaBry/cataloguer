@@ -20,6 +20,10 @@ const config: Config = {
         'brown-rose': '#8D736C',
         'narvik': '#EAE7DD',
       },
+      fontFamily: {
+        inter: ['var(--font-inter)'],
+        emerl: ['var(--font-emerland)'],
+      }
     },
   },
   plugins: [
