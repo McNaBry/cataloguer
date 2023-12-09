@@ -1,7 +1,8 @@
 "use client"
 
-import { Combobox } from "@headlessui/react"
+import { Combobox, Transition } from "@headlessui/react"
 import { useState } from "react"
+import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 const categories: string[] = [
   "Alcohol",
@@ -10,7 +11,66 @@ const categories: string[] = [
   "Korean Drama"
 ]
 
-export default function Home() {
+function CategoryOption({ category }: { category: string }) {
+  return (
+    <Combobox.Option 
+      key={category} 
+      value={category}
+      className={({ active }) => `relative cursor-default select-none py-2 pl-10 pr-4 ${
+        active ? "bg-teal-600 text-white" : "text-gray-900"
+      }`}>
+        {({ selected, active }) => (
+          <>
+            <span className={`block truncate ${
+              selected ? "font-medium" : "font-normal"
+            }`}>
+              {category}
+            </span>
+
+            {selected ? (
+              <span className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                active ? 'text-white' : 'text-teal-600'
+              }`}>
+                <CheckIcon className="h-5 w-5" aria-hidden="true" />
+              </span>
+            ) : null}
+          </>
+        )}
+    </Combobox.Option>
+  )
+}
+
+interface CategoryOptionListProps {
+  filteredCategories: string[];
+  query: string;
+}
+
+function CategoryOptionList({ filteredCategories, query }: CategoryOptionListProps) {
+  return (
+    <Transition
+      enter="transition duration-100 ease-out"
+      enterFrom="transform scale-95 opacity-0"
+      enterTo="transform scale-100 opacity-100"
+      leave="transition duration-75 ease-out"
+      leaveFrom="transform scale-100 opacity-100"
+      leaveTo="transform scale-95 opacity-0"
+    >
+      <Combobox.Options className="absolute max-h-60 w-full py-1 mt-1.5 rounded-md bg-white ring-1 ring-black/5 cursor-default">
+        {filteredCategories.length == 0 && query !== '' ? (
+          <div className="relative cursor-default select-none px-4 py-2 text-gray-700">
+            Nothing found.
+          </div>
+        ) : (
+          filteredCategories.map((category) => (
+            <CategoryOption category={category} />
+          ))
+        )}
+      </Combobox.Options>
+    </Transition>
+  )
+}
+
+function CategorySelector() {
   // Stores selected option.
   const [selectedCategory, setSelectedCategory] = useState<string>(categories[0])
   // Dynamically stores what user is searching in input.
@@ -23,18 +83,29 @@ export default function Home() {
       }) 
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
+    <Combobox value={selectedCategory} onChange={setSelectedCategory}>
+      <div className="relative w-full">
+        <Combobox.Input onChange={(event) => setQuery(event.target.value)} 
+          className="w-full px-4 py-2 text-black rounded focus:outline-none" />
+        <Combobox.Button className="absolute inset-y-0 right-0 pr-2 flex items-center">
+          <ChevronUpDownIcon
+            className="h-5 w-5 text-gray-400"
+            aria-hidden="true"
+          />
+        </Combobox.Button>
+      </div>
+      <CategoryOptionList filteredCategories={filteredCategories} query={query} />
+    </Combobox>
+  )
+}
+
+export default function Home() {
+  return (
+    <main className="flex flex-col items-center p-24">
       <h1>Cataloguer</h1>
-      <Combobox value={selectedCategory} onChange={setSelectedCategory}>
-        <Combobox.Input onChange={(event) => setQuery(event.target.value)} />
-        <Combobox.Options>
-          {filteredCategories.map((category) => (
-            <Combobox.Option key={category} value={category}>
-              {category}
-            </Combobox.Option>
-          ))}
-        </Combobox.Options>
-      </Combobox>
+      <div className="w-100">
+        <CategorySelector />
+      </div>
     </main>
   )
 }
