@@ -16,7 +16,7 @@ function CategoryOption({ category }: { category: string }) {
     <Combobox.Option 
       value={category}
       className={({ active }) => `relative cursor-default select-none py-2 pl-10 pr-4 ${
-        active ? "bg-teal-600 text-white" : "text-gray-900"
+        active ? "bg-brown-rose text-white" : "text-gray-900"
       }`}>
         {({ selected, active }) => (
           <>
@@ -54,7 +54,7 @@ function CategoryOptionList({ filteredCategories, query }: CategoryOptionListPro
       leaveFrom="transform scale-100 opacity-100"
       leaveTo="transform scale-95 opacity-0"
     >
-      <Combobox.Options className="absolute max-h-60 w-full py-1 mt-1.5 rounded-md bg-white ring-1 ring-black/5 cursor-default">
+      <Combobox.Options className="absolute max-h-60 w-full py-1 mt-1.5 rounded-md bg-narvik ring-1 ring-black/5 cursor-default">
         {filteredCategories.length == 0 && query !== '' ? (
           <div className="relative cursor-default select-none px-4 py-2 text-gray-700">
             Nothing found.
@@ -85,10 +85,10 @@ function CategorySelector() {
     <Combobox value={selectedCategory} onChange={setSelectedCategory}>
       <div className="relative w-full">
         <Combobox.Input onChange={(event) => setQuery(event.target.value)} 
-          className="w-full px-4 py-2 text-black rounded focus:outline-none" />
+          className="w-full bg-narvik px-4 py-2 text-black rounded focus:outline-none" />
         <Combobox.Button className="absolute inset-y-0 right-0 pr-2 flex items-center">
           <ChevronUpDownIcon
-            className="h-5 w-5 text-gray-400"
+            className="h-5 w-5 text-slate-700"
             aria-hidden="true"
           />
         </Combobox.Button>
@@ -100,8 +100,8 @@ function CategorySelector() {
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center p-24">
-      <h1>Cataloguer</h1>
+    <main className="h-full p-24 flex flex-col items-center justify-center content-center">
+      <h1 className="text-4xl mb-2">cataloguer.</h1>
       <div className="w-100">
         <CategorySelector />
       </div>
