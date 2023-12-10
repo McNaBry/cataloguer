@@ -1,3 +1,7 @@
+"use client"
+
+import { useSearchParams } from 'next/navigation'
+
 type Entry = {
   id: string;
   title: string;
@@ -40,9 +44,16 @@ function EntryList() {
 }
 
 export default function EntryViewer() {
+  const searchParams = useSearchParams()
+  var category = searchParams.get('category') ?? "Category"
+
+  if (category == "") {
+    category = "Category"
+  }
+
     return (
       <main className="h-full p-24 flex flex-col items-center content-center">
-        <h1 className="font-emerl text-5xl mb-2">Category 1</h1>
+        <h1 className="font-emerl text-5xl mb-2">{category}</h1>
         <EntryList />
       </main>
     )
