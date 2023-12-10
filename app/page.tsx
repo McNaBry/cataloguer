@@ -2,6 +2,7 @@
 
 import { Combobox, Transition } from "@headlessui/react"
 import { useState } from "react"
+import Link from 'next/link'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 const categories: string[] = [
@@ -82,19 +83,26 @@ function CategorySelector() {
       }) 
 
   return (
-    <Combobox value={selectedCategory} onChange={setSelectedCategory}>
-      <div className="relative w-full">
-        <Combobox.Input onChange={(event) => setQuery(event.target.value)} 
-          className="w-full bg-narvik px-4 py-2 text-black rounded focus:outline-none" />
-        <Combobox.Button className="absolute inset-y-0 right-0 pr-2 flex items-center">
-          <ChevronUpDownIcon
-            className="h-5 w-5 text-slate-700"
-            aria-hidden="true"
-          />
-        </Combobox.Button>
-      </div>
-      <CategoryOptionList filteredCategories={filteredCategories} query={query} />
-    </Combobox>
+    <>
+      <Combobox value={selectedCategory} onChange={setSelectedCategory}>
+        <div className="relative w-full">
+          <Combobox.Input onChange={(event) => setQuery(event.target.value)} 
+            className="w-full bg-narvik px-4 py-2 text-black rounded focus:outline-none" />
+          <Combobox.Button className="absolute inset-y-0 right-0 pr-2 flex items-center">
+            <ChevronUpDownIcon
+              className="h-5 w-5 text-slate-700"
+              aria-hidden="true"
+            />
+          </Combobox.Button>
+        </div>
+        <CategoryOptionList filteredCategories={filteredCategories} query={query} />
+      </Combobox>
+      <Link href={`/view-entries?category=${selectedCategory}`} className="flex justify-center">
+        <button className="bg-[#5C9977] py-2 px-2.5 mt-2 border-b-4 border-[#497A5F] font-semibold hover:bg-[#538A6B] rounded">
+          Access Catalog
+        </button>
+      </Link>
+    </>
   )
 }
 
@@ -102,7 +110,7 @@ export default function Home() {
   return (
     <main className="h-full p-24 flex flex-col items-center justify-center content-center">
       <h1 className="font-emerl text-5xl mb-2">cataloguer.</h1>
-      <div className="w-100">
+      <div className="w-100 flex flex-col">
         <CategorySelector />
       </div>
     </main>
