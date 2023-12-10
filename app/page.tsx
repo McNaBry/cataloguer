@@ -108,7 +108,7 @@ function CategorySelector() {
 
 export default function Home() {
   return (
-    <main className="h-full p-24 flex flex-col items-center justify-center content-center">
+    <main className="h-full flex flex-col items-center justify-center content-center">
       <h1 className="font-emerl text-5xl mb-2">cataloguer.</h1>
       <div className="w-100 flex flex-col">
         <CategorySelector />
