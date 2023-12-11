@@ -19,6 +19,9 @@ const config: Config = {
         'sorrell-brown': '#99775C',
         'brown-rose': '#8D736C',
         'narvik': '#EAE7DD',
+        'button': '#5C9977',
+        'button-dark': '#497A5F',
+        'button-hover': '#538A6B',
       },
       fontFamily: {
         inter: ['var(--font-inter)'],

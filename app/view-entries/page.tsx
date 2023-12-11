@@ -2,6 +2,8 @@
 
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { useSearchParams, useRouter } from 'next/navigation'
+import { ArrowSmallLeftIcon } from '@heroicons/react/20/solid'
+import Link from 'next/link';
 
 type Entry = {
   id: string;
@@ -61,6 +63,12 @@ export default function EntryViewer() {
     return (
       <main className="h-full flex flex-col items-center content-center">
         <h1 className="font-emerl text-5xl mb-2">{category}</h1>
+        <Link href="/" className="w-fit h-fit">
+          <button className="w-full h-full bg-button py-0.5 pl-1 pr-3 border-b-4 border-button-dark flex justify-center items-center hover:bg-button-hover rounded">
+            <ArrowSmallLeftIcon className="h-8 w-8 text-slate-200" />
+            <span className="font-semibold">Back</span>
+          </button>
+        </Link>
         <EntryList />
       </main>
     )
