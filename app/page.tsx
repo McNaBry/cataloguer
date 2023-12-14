@@ -4,13 +4,7 @@ import { Combobox, Transition } from "@headlessui/react"
 import { useState } from "react"
 import Link from 'next/link'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-
-const categories: string[] = [
-  "Alcohol",
-  "Coffee",
-  "Anime",
-  "Korean Drama"
-]
+import categoryList from "../data/categories.json"
 
 function CategoryOption({ category }: { category: string }) {
   return (
@@ -71,6 +65,7 @@ function CategoryOptionList({ filteredCategories, query }: CategoryOptionListPro
 }
 
 function CategorySelector() {
+  const categories = categoryList.categories
   // Stores selected option.
   const [selectedCategory, setSelectedCategory] = useState<string>(categories[0])
   // Dynamically stores what user is searching in input.
