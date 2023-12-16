@@ -26,11 +26,24 @@ const config: Config = {
       fontFamily: {
         inter: ['var(--font-inter)'],
         emerl: ['var(--font-emerland)'],
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            color: 'white',
+            fontFamily: 'Inter',
+            h1: {
+              color: 'white',
+              fontWeight: 'normal'
+            }
+          }
+        }
       }
     },
   },
   plugins: [
-    require('@headlessui/tailwindcss')
+    require('@headlessui/tailwindcss'),
+    require('@tailwindcss/typography'),
   ],
 }
 export default config
