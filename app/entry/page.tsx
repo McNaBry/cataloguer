@@ -15,7 +15,7 @@ function MarkdownContent() {
 
 function EntryCard() {
   return (
-    <div className="w-full lg:w-2/3 h-fit bg-brown-rose border-solid border-2 border-slate-950 p-5 rounded ring-black/5">
+    <div className="w-full lg:w-2/3 h-fit bg-sorrell-darker p-5 rounded shadow-xl">
       <MarkdownContent />
     </div>
   )

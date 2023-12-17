@@ -17,6 +17,7 @@ const config: Config = {
         'chestnut': '#954535',
         'chestnut-brown': '#5B2516',
         'sorrell-brown': '#99775C',
+        'sorrell-darker': '#735945',
         'brown-rose': '#8D736C',
         'narvik': '#EAE7DD',
         'button': '#5C9977',
@@ -32,9 +33,8 @@ const config: Config = {
           css: {
             color: 'white',
             fontFamily: 'Inter',
-            h1: {
+            '--tw-prose-headings': {
               color: 'white',
-              fontWeight: 'normal'
             }
           }
         }
