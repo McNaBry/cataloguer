@@ -55,7 +55,7 @@ function EntryCard() {
 export default function Entry() {
   return (
     <main className="h-full flex flex-col items-center content-center">
-      <h1 className="font-emerl text-4xl mb-2">My Lie in April</h1>
+      <h1 className="font-emerl text-5xl mb-4">My Lie in April</h1>
       <EntryCard />
     </main>
   )
