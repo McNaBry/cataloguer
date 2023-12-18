@@ -61,7 +61,7 @@ export default function EntryViewer() {
   }
 
     return (
-      <main className="h-full flex flex-col items-center content-center">
+      <main className="p-10 flex flex-col items-center justify-center">
         <h1 className="font-emerl text-5xl mb-2">{category}</h1>
         <Link href="/" className="w-fit h-fit">
           <button className="w-full h-full bg-button py-0.5 pl-1 pr-3 border-b-4 border-button-dark flex justify-center items-center hover:bg-button-hover rounded">

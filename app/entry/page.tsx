@@ -36,7 +36,6 @@ function EntryTags({ tagData }: { tagData: Record<string, any> }) {
 
 function EntryCard() {
   const result = retrieveMarkdown()
-  console.log(result.data)
   return (
     <div className="w-full lg:w-2/3 min-h-full h-fit flex flex-col">
       <EntryTags tagData={result.data} />
@@ -47,7 +46,7 @@ function EntryCard() {
 
 export default function Entry() {
   return (
-    <main className="h-full flex flex-col items-center content-center">
+    <main className="p-10 flex flex-col items-center justify-center">
       <h1 className="font-emerl text-5xl mb-4">My Lie in April</h1>
       <EntryCard />
     </main>
