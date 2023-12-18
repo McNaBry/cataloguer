@@ -27,7 +27,7 @@ function EntryTags({ tagData }: { tagData: Record<string, any> }) {
     <div className="w-full mb-2 flex flex-wrap overflow-auto">
       {testTags.tags.map((tag) => {
         return (
-          <Tag key={tag} tagKey={tag} tagContent={String(tagData[tag])} />
+          <Tag key={tag.name} tagKey={tag.name} tagContent={String(tagData[tag.name])} tagDesc={tag.desc} />
         )
       })}
     </div>
