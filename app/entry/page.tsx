@@ -3,20 +3,20 @@ import matter from 'gray-matter'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
-function MarkdownContent() {
-  const file = fs.readFileSync("data/test.md")
+import testTags from "../../data/testTags.json"
+
+function retrieveMarkdown() {
+  const file = fs.readFileSync("data/testContent.md")
   const result = matter(file)
-  return (
-    <Markdown className="prose" remarkPlugins={[remarkGfm]}>
-      {result.content}
-    </Markdown>
-  )
+  return result
 }
 
-function EntryContent() {
+function EntryContent({ markdown }: { markdown: string }) {
   return (
     <div className="w-full h-fit bg-sorrell-darker p-5 rounded shadow-md">
-      <MarkdownContent />
+      <Markdown className="prose" remarkPlugins={[remarkGfm]}>
+        {markdown}
+      </Markdown>
     </div>
   )
 }
@@ -31,21 +31,25 @@ function Tag({ tagContent }: { tagContent: string }) {
   )
 }
 
-function EntryTags() {
+function EntryTags({ tagData }: { tagData: Record<string, any> }) {
   return (
     <div className="w-full mb-2 flex flex-wrap overflow-auto">
-      <Tag tagContent='Really long long long long tag: 55555' />
-      <Tag tagContent='Really long long long tag: 55555' />
-      <Tag tagContent='Really long long long long long long long long long long long long long long long long tag: 55555' />
+      {testTags.tags.map((tag) => {
+        return (
+          <Tag key={tag} tagContent={tag.split("_").join(" ") + ": " + String(tagData[tag])} />
+        )
+      })}
     </div>
   )
 }
 
 function EntryCard() {
+  const result = retrieveMarkdown()
+  console.log(result.data)
   return (
     <div className="w-full lg:w-2/3 min-h-full h-fit flex flex-col">
-      <EntryTags />
-      <EntryContent />
+      <EntryTags tagData={result.data} />
+      <EntryContent markdown={result.content} />
     </div>
   )
 }
