@@ -4,6 +4,7 @@ import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
 import testTags from "../../data/testTags.json"
+import Tag from "./Tag"
 
 function retrieveMarkdown() {
   const file = fs.readFileSync("data/testContent.md")
@@ -21,22 +22,12 @@ function EntryContent({ markdown }: { markdown: string }) {
   )
 }
 
-function Tag({ tagContent }: { tagContent: string }) {
-  return (
-    <span className="w-fit block bg-narvik text-black px-3 py-1 mr-2 mb-2
-    whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer 
-    rounded-full shadow-md">
-      {tagContent}
-    </span>
-  )
-}
-
 function EntryTags({ tagData }: { tagData: Record<string, any> }) {
   return (
     <div className="w-full mb-2 flex flex-wrap overflow-auto">
       {testTags.tags.map((tag) => {
         return (
-          <Tag key={tag} tagContent={tag.split("_").join(" ") + ": " + String(tagData[tag])} />
+          <Tag key={tag} tagKey={tag} tagContent={String(tagData[tag])} />
         )
       })}
     </div>
