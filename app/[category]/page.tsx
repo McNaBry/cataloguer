@@ -21,7 +21,7 @@ export default function EntryViewer({ params }: { params: { category: string } }
           <span className="font-semibold">Back</span>
         </button>
       </Link>
-      <EntryList />
+      <EntryList category={category} />
     </main>
   )
 }

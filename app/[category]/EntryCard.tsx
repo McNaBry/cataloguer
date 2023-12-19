@@ -1,14 +1,15 @@
 "use client"
 
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
+import { useRouter } from "next/navigation";
 
 export type Entry = {
-  id: string;
   title: string;
-  description: string;
+  summary: string;
 }
 
-export default function EntryCard({ entry, router }: { entry: Entry, router: AppRouterInstance }) {
+export default function EntryCard({ entry }: { entry: Entry }) {
+  const router = useRouter()
+  
   function navigateToEntryPage() {
     router.push("/entry")
   }
@@ -19,7 +20,7 @@ export default function EntryCard({ entry, router }: { entry: Entry, router: App
       <span className="w-fit max-w-full bg-narvik py-1 px-2 mb-1.5">
         <p className="text-xl text-black text-ellipsis overflow-hidden">{entry.title}</p>
       </span>
-      <p className="break-words">{entry.description}</p>
+      <p className="break-words">{entry.summary || "No Summary Found :("}</p>
     </div>
   )
 }
