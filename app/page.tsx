@@ -92,7 +92,7 @@ function CategorySelector() {
         </div>
         <CategoryOptionList filteredCategories={filteredCategories} query={query} />
       </Combobox>
-      <Link href={`/${selectedCategory}`} className="flex justify-center">
+      <Link href={`/view-entries?category=${selectedCategory}`} className="flex justify-center">
         <button className="bg-button py-2 px-2.5 mt-2 border-b-4 border-button-dark font-semibold hover:bg-button-hover rounded">
           Access Catalog
         </button>

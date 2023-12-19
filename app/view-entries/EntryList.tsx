@@ -1,6 +1,3 @@
-import fs from 'fs'
-import matter from 'gray-matter'
-
 import EntryCard, { Entry } from "./EntryCard"
 
 function EmptyEntryList({ category }: { category: string }) {
@@ -11,18 +8,7 @@ function EmptyEntryList({ category }: { category: string }) {
   )
 }
 
-function fetchEntryNames(category: string) {
-  if (!fs.existsSync(`data/${category}/entries.json`)) {
-    return []
-  }
-  const data = fs.readFileSync(`data/${category}/entries.json`)
-  const json = JSON.parse(matter(data).content)
-  return json.entries
-}
-
-export default function EntryList({ category }: { category: string }) {
-  const entries: Entry[] = fetchEntryNames(category)
-
+export default function EntryList({ category, entries }: { category: string, entries: Entry[] }) {
   const entryList = entries.map((entry, indx) => {
     return (
       <div key={entry.title}>

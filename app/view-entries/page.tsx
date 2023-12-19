@@ -1,16 +1,26 @@
+"use client"
+
 import { ArrowSmallLeftIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import EntryList from "./EntryList"
+import { Entry } from "./EntryCard"
 
-import categoryList from "../../data/categories.json"
-
-// Statically generates the dynamic routes at build time instead. 
-export async function generateStaticParams() {
-  return categoryList.categories.map((category) => ({category: category}))
+function fetchEntryNames(category: string) {
+  try {
+    const cleanedCategory = category.toLowerCase().split(" ").join("_")
+    const json = require(`../../data/${cleanedCategory}/entries.json`)
+    return json.entries
+  } catch (error) {
+    return []
+  }
 }
 
-export default function EntryViewer({ params }: { params: { category: string } }) {
-  var category = params.category
+export default function EntryViewer() {
+  const searchParams = useSearchParams()
+  const category = searchParams.get("category") || ""
+
+  const entries: Entry[] = fetchEntryNames(category)
 
   return (
     <main className="p-10 flex flex-col items-center justify-center">
@@ -21,7 +31,7 @@ export default function EntryViewer({ params }: { params: { category: string } }
           <span className="font-semibold">Back</span>
         </button>
       </Link>
-      <EntryList category={category} />
+      <EntryList category={category} entries={entries} />
     </main>
   )
 }
