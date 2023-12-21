@@ -61,7 +61,7 @@ function EntryTags({ category, tagData }: { category: string, tagData: Record<st
 export default function Entry({ category, title }: { category: string, title: string }) {
   const result:RawEntry = retrieveMarkdown(category, title)
   return (
-    <div className="w-full lg:w-2/3 min-h-full h-fit flex flex-col">
+    <div className="w-full lg:w-2/3 min-h-full h-fit mt-2 flex flex-col">
       <EntryTags category={category} tagData={result.tags} />
       <EntryContent markdown={result.markdown} />
     </div>
