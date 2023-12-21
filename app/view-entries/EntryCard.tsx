@@ -7,11 +7,11 @@ export type Entry = {
   summary: string;
 }
 
-export default function EntryCard({ entry }: { entry: Entry }) {
+export default function EntryCard({ category, entry }: { category: string, entry: Entry }) {
   const router = useRouter()
   
   function navigateToEntryPage() {
-    router.push("/entry")
+    router.push(`/entry?category=${category}&title=${entry.title}`)
   }
   
   return (

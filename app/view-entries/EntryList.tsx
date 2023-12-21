@@ -12,7 +12,7 @@ export default function EntryList({ category, entries }: { category: string, ent
   const entryList = entries.map((entry, indx) => {
     return (
       <div key={entry.title}>
-        <EntryCard entry={entry} />
+        <EntryCard category={category} entry={entry} />
         {indx < entries.length - 1 
           ? <hr className="h-0.5 bg-narvik"/>
           : null 

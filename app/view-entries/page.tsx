@@ -9,14 +9,14 @@ import { Entry } from "./EntryCard"
 function fetchEntryNames(category: string) {
   try {
     const cleanedCategory = category.toLowerCase().split(" ").join("_")
-    const json = require(`../../data/${cleanedCategory}/entries.json`)
+    const json = require(`../../public/data/${cleanedCategory}/entries.json`)
     return json.entries
   } catch (error) {
     return []
   }
 }
 
-export default function EntryViewer() {
+export default function EntryListViewer() {
   const searchParams = useSearchParams()
   const category = searchParams.get("category") || ""
 

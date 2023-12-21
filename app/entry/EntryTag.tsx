@@ -3,6 +3,11 @@
 import { Dialog, Transition } from "@headlessui/react"
 import { useState, Fragment } from "react"
 
+export type Tag  = {
+  name: string;
+  description: string;
+}
+
 interface TagButtonProps {
   content: string;
   openModal: () => void;
@@ -93,13 +98,11 @@ function TagModal({ isOpen, closeModal, tagKey, tagContent, toolTip }: TagModalP
   )
 }
 
-interface TagProps {
-  tagKey: string;
-  tagContent: string;
-  tagDesc: string;
+type EntryTagProps = Tag & {
+  value: string;
 }
 
-export default function Tag({ tagKey, tagContent, tagDesc }: TagProps) {
+export default function EntryTag({ name, description, value }: EntryTagProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -110,11 +113,10 @@ export default function Tag({ tagKey, tagContent, tagDesc }: TagProps) {
     setIsOpen(true)
   }
 
-  const cleanedKey = tagKey.split("_").join(" ")
   return (
     <>
-      <TagButton content={cleanedKey + ": " + tagContent} openModal={openModal} />
-      <TagModal isOpen={isOpen} closeModal={closeModal} tagKey={cleanedKey} tagContent={tagContent} toolTip={tagDesc} />
+      <TagButton content={name + ": " + value} openModal={openModal} />
+      <TagModal isOpen={isOpen} closeModal={closeModal} tagKey={name} tagContent={value} toolTip={description} />
     </>
   )
 }

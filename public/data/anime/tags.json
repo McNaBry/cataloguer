@@ -1,0 +1,16 @@
+{
+    "tags": [
+        {
+            "name": "Latest Season",
+            "description": "The latest season watched."
+        },
+        {
+            "name": "Rewatch",
+            "description": "The number of times this anime has been re-watched."
+        },
+        {
+            "name": "Genre",
+            "description": "The genre of this anime (E.g. Slice of Life, Thriller, etc)."
+        }
+    ]
+}

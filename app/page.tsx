@@ -4,7 +4,7 @@ import { Combobox, Transition } from "@headlessui/react"
 import { useState } from "react"
 import Link from 'next/link'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-import categoryList from "../data/categories.json"
+import categoryList from "../public/data/categories.json"
 
 function CategoryOption({ category }: { category: string }) {
   return (
