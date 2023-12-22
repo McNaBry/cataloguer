@@ -86,6 +86,6 @@ This website can be easily repurposed for your own use. The only files that need
   -  Add a new folder for that category.
 2. In the category folder
   - Add a `tags.json` file containing the tags and their descriptions.
-  - Add an `entries.json` file containing the titles of the entires and their summaries.
+  - Add an `entries.json` file containing the titles of the entries and their summaries.
   - Add a markdown file for the new review you wish to write.
   - Enjoy :)
