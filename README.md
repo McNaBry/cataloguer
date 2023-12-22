@@ -25,7 +25,7 @@ Currently, the necessary files are stored in the `data` folder under the `public
 For each category in this list, a new folder must be created under `data`. For example, `Coffee` would require `data/coffee` and `Asian Dramas` would require `data/asian_dramas`. Folder names must strictly be in *lowercase* and spaces are to be replaced with underscores.
 
 ### Retrieving the list of reviews
-To retrieve the list of reviews associated with each category, an `entries.json` file is created under the respective folders. It contains the `title` of each review and the `summary` to display. The `title` will be used to retrieve the markdown file and is *case insensitive*.
+To retrieve the list of reviews associated with each category, an `entries.json` file is created under the respective folders. It contains the `title` of each review and the `summary` to display. The `title` will be used to retrieve the markdown file and is *case sensitive*.
 
 ```JSON
 {
