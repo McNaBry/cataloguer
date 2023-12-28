@@ -1,13 +1,9 @@
 "use client"
 
 import { useRouter } from "next/navigation";
+import { EntryCategory, EntryDisplay } from "../(common)/(types)/EntryModel";
 
-export type Entry = {
-  title: string;
-  summary: string;
-}
-
-export default function EntryCard({ category, entry }: { category: string, entry: Entry }) {
+export default function EntryCard({ category, entry }: { category: EntryCategory, entry: EntryDisplay }) {
   const router = useRouter()
   
   function navigateToEntryPage() {

@@ -1,6 +1,7 @@
-import EntryCard, { Entry } from "./EntryCard"
+import { EntryCategory, EntryDisplay } from "../(common)/(types)/EntryModel"
+import EntryCard from "./EntryCard"
 
-function EmptyEntryList({ category }: { category: string }) {
+function EmptyEntryList({ category }: { category: EntryCategory }) {
   return (
     <p className="text-2xl text-center mt-4">
       Oops... No entries found for <span className="font-semibold">{category}</span>
@@ -8,7 +9,7 @@ function EmptyEntryList({ category }: { category: string }) {
   )
 }
 
-export default function EntryList({ category, entries }: { category: string, entries: Entry[] }) {
+export default function EntryList({ category, entries }: { category: EntryCategory, entries: EntryDisplay[] }) {
   const entryList = entries.map((entry, indx) => {
     return (
       <div key={entry.title}>

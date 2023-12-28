@@ -2,25 +2,16 @@
 
 import { useSearchParams } from 'next/navigation';
 
-import { Entry } from "./EntryCard"
 import EntryList from "./EntryList"
 import BackButton from '../(components)/BackButton';
-
-function fetchEntryNames(category: string) {
-  try {
-    const cleanedCategory = category.toLowerCase().split(" ").join("_")
-    const json = require(`../../public/data/${cleanedCategory}/entries.json`)
-    return json.entries
-  } catch (error) {
-    return []
-  }
-}
+import { fetchEntries } from '../(util)/dataFetcher';
+import { EntryDisplay } from '../(common)/(types)/EntryModel';
 
 export default function EntryListViewer() {
   const searchParams = useSearchParams()
   const category = searchParams.get("category") || ""
 
-  const entries: Entry[] = fetchEntryNames(category)
+  const entries: EntryDisplay[] = fetchEntries(category)
 
   return (
     <main className="p-10 flex flex-col items-center justify-center">

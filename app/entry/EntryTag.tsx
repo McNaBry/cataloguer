@@ -2,11 +2,7 @@
 
 import { Dialog, Transition } from "@headlessui/react"
 import { useState, Fragment } from "react"
-
-export type Tag  = {
-  name: string;
-  description: string;
-}
+import { EntryTag, TagMetadata } from "../(common)/(types)/EntryModel"
 
 interface TagButtonProps {
   content: string;
@@ -98,9 +94,7 @@ function TagModal({ isOpen, closeModal, tagKey, tagContent, toolTip }: TagModalP
   )
 }
 
-type EntryTagProps = Tag & {
-  value: string;
-}
+type EntryTagProps = TagMetadata & EntryTag
 
 export default function EntryTag({ name, description, value }: EntryTagProps) {
   const [isOpen, setIsOpen] = useState(false)

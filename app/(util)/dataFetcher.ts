@@ -1,6 +1,8 @@
 import matter from 'gray-matter'
 
-export function fetchEntryData(category: string, title: string) {
+import { EntryTitle, EntryCategory, RawEntry, EntryDisplay } from "../(common)/(types)/EntryModel"
+
+export function fetchEntryData(category: EntryCategory, title: EntryTitle): RawEntry {
   try {
     const cleanedCategory = category.toLowerCase().split(" ").join("_")
     const markdownFile = require(`../../public/data/${cleanedCategory}/${title}.md`)
@@ -11,7 +13,7 @@ export function fetchEntryData(category: string, title: string) {
   }
 }
 
-export function fetchTagsMetadata(category: string) {
+export function fetchTagsMetadata(category: EntryCategory) {
   try {
     const cleanedCategory = category.toLowerCase().split(" ").join("_")
     const file = require(`../../public/data/${cleanedCategory}/tags.json`)
@@ -21,7 +23,7 @@ export function fetchTagsMetadata(category: string) {
   }
 }
 
-export function fetchEntries(category: string) {
+export function fetchEntries(category: EntryCategory): EntryDisplay[] {
   try {
     const cleanedCategory = category.toLowerCase().split(" ").join("_")
     const json = require(`../../public/data/${cleanedCategory}/entries.json`)
@@ -31,7 +33,7 @@ export function fetchEntries(category: string) {
   }
 }
 
-export function fetchCategories() {
+export function fetchCategories(): EntryCategory[] {
   try {
     const json = require(`../../public/data/categories.json`)
     return json.categories
