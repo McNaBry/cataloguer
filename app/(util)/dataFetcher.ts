@@ -1,8 +1,8 @@
 import matter from 'gray-matter'
 
-export function fetchMarkdown(category: string, title: string) {
+export function fetchEntryData(category: string, title: string) {
   try {
-    const cleanedCategory = category.toLowerCase().split(" ").join(" ")
+    const cleanedCategory = category.toLowerCase().split(" ").join("_")
     const markdownFile = require(`../../public/data/${cleanedCategory}/${title}.md`)
     const parsedFile = matter(markdownFile.default)
     return { tags: parsedFile.data, markdown: parsedFile.content }
@@ -11,7 +11,17 @@ export function fetchMarkdown(category: string, title: string) {
   }
 }
 
-export function fetchEntryNames(category: string) {
+export function fetchTagsMetadata(category: string) {
+  try {
+    const cleanedCategory = category.toLowerCase().split(" ").join("_")
+    const file = require(`../../public/data/${cleanedCategory}/tags.json`)
+    return file.tags
+  } catch (error) {
+    return []
+  }
+}
+
+export function fetchEntries(category: string) {
   try {
     const cleanedCategory = category.toLowerCase().split(" ").join("_")
     const json = require(`../../public/data/${cleanedCategory}/entries.json`)
