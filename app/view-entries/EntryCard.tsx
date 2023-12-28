@@ -11,7 +11,7 @@ export default function EntryCard({ category, entry }: { category: EntryCategory
   }
   
   return (
-    <div className="w-full h-fit py-4 px-3 my-2 rounded cursor-default flex flex-col justify-center hover:bg-brown-rose"
+    <div className="w-full h-fit py-4 px-3 my-2 rounded cursor-pointer flex flex-col justify-center hover:bg-brown-rose"
       onClick={navigateToEntryPage}>
       <span className="w-fit max-w-full bg-narvik py-1 px-2 mb-1.5">
         <p className="text-xl text-black text-ellipsis overflow-hidden">{entry.title}</p>
