@@ -26,9 +26,9 @@ function TagButton({ content, openModal }: TagButtonProps) {
 interface TagModalProps {
   isOpen: boolean;
   closeModal: () => void;
-  tagKey: string;
-  tagContent: string;
-  toolTip: string;
+  tagKey: TagMetadata['name'];
+  tagContent: EntryTag['value'];
+  toolTip: TagMetadata['description'];
 }
 
 function TagModal({ isOpen, closeModal, tagKey, tagContent, toolTip }: TagModalProps) {

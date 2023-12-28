@@ -22,7 +22,7 @@ export type EntryTag = {
 
 // Tag metadata found in tags.json.
 export type TagMetadata = {
-  name: string;
+  name: EntryTag['name'];
   description: string;
 }
 
