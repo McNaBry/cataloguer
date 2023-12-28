@@ -1,18 +1,4 @@
-export type EntryTitle = string;
 export type EntryCategory = string;
-export type EntryContent = string;
-
-// Raw entry data extracted from its markdown file.
-export type RawEntry = {
-  tags: Record<string, any>;
-  markdown: EntryContent;
-}
-
-// Summarized version of entry. Used for displaying in a list.
-export type EntryDisplay = {
-  title: EntryTitle;
-  summary: string;
-}
 
 // Entry tag.
 export type EntryTag = {
@@ -28,7 +14,19 @@ export type TagMetadata = {
 
 // Model of a full entry.
 export type EntryModel = {
-  title: EntryTitle;
+  title: string;
   tags: EntryTag[];
-  markdown: EntryContent;
+  markdown: string;
+}
+
+// Raw entry data extracted from its markdown file.
+export type RawEntry = {
+  tags: Record<string, any>;
+  markdown: string;
+}
+
+// Summarized version of entry. Used for displaying in a list.
+export type EntryDisplay = {
+  title: EntryModel['title'];
+  summary: string;
 }

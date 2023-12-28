@@ -1,8 +1,8 @@
 import matter from 'gray-matter'
 
-import { EntryTitle, EntryCategory, RawEntry, EntryDisplay } from "../(common)/(types)/EntryModel"
+import { EntryModel, EntryCategory, RawEntry, EntryDisplay } from "../(common)/(types)/EntryModel"
 
-export function fetchEntryData(category: EntryCategory, title: EntryTitle): RawEntry {
+export function fetchEntryData(category: EntryCategory, title: EntryModel['title']): RawEntry {
   try {
     const cleanedCategory = category.toLowerCase().split(" ").join("_")
     const markdownFile = require(`../../public/data/${cleanedCategory}/${title}.md`)

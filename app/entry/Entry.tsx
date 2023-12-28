@@ -3,15 +3,14 @@ import remarkGfm from 'remark-gfm'
 
 import EntryTag from "./EntryTag"
 import { 
-  EntryCategory, 
-  EntryContent, 
-  EntryTitle, 
+  EntryCategory,
+  EntryModel,
   RawEntry, 
   TagMetadata 
 } from "../(common)/(types)/EntryModel"
 import { fetchEntryData, fetchTagsMetadata } from '../(util)/dataFetcher';
 
-function EntryMarkdown({ markdown }: { markdown: EntryContent }) {
+function EntryMarkdown({ markdown }: { markdown: EntryModel['markdown'] }) {
   return (
     <div className="w-full h-fit bg-sorrell-darker p-5 rounded shadow-md">
       <Markdown className="prose" remarkPlugins={[remarkGfm]}>
@@ -39,7 +38,7 @@ function EntryTags({ category, tags }: { category: EntryCategory, tags: RawEntry
   )
 }
 
-export default function Entry({ category, title }: { category: EntryCategory, title: EntryTitle }) {
+export default function Entry({ category, title }: { category: EntryCategory, title: EntryModel['title'] }) {
   const result: RawEntry = fetchEntryData(category, title)
   return (
     <div className="w-full lg:w-2/3 min-h-full h-fit mt-2 flex flex-col">
