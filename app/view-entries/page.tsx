@@ -16,6 +16,13 @@ export default function EntryListViewer() {
   return (
     <main className="p-10 flex flex-col items-center justify-center">
       <h1 className="font-emerl text-5xl mb-2">{category}</h1>
+      {entries.length > 0 ?
+        <p className="text-lg text-italic">
+          {entries.length} 
+          {entries.length <= 1 ? " entry" : " entries"} found!
+        </p>
+        : <></>
+      }
       <BackButton link="/" />
       <EntryList category={category} entries={entries} />
     </main>
